@@ -1,9 +1,9 @@
-from django.contrib import admin
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.home, "home"),  # redirect to home
+    path('', views.home, name='home'), # Redirect to home page
+    path('signup/', views.signup, name="signup"),  # redirect to Registration Page
+    path('signin/', views.signin, name="signin"),  # redirect to Login page
+    path('signout/', views.signout, name="signout"),  # Logout from the user
 ]

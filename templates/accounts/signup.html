@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up - eComAssesment</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %} ">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="main">
+
+        <h1>Sign up</h1>
+        <div class="container">
+            <div class="sign-up-content">
+                <form method="POST" class="signup-form" action="{% url 'signup' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <a href="{% url 'home' %}"><h2 class="form-title">eComAssesment Registration</h2></a>
+
+                    <div class="form-textbox">
+                        <label for="name">Username</label>
+                        <input type="text" name="username" id="name" value="{{ username }}" required />
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" value="{{ email }}" required/>
+                    </div>
+
+                    <div class="form-textbox">
+                        <label for="pass">Password</label>
+                        <input type="password" name="pass" id="pass" required/>
+                    </div>
+
+                    <div>
+                        <h5 style="color: red">{{ username_checking }}</h5>
+                        <h5 style="color: red">{{ character_count_check }}</h5>
+                        <h5 style="color: red">{{ number_check }}</h5>
+                        <h5 style="color: red">{{ uppercase_check }}</h5>
+                        <h5 style="color: red">{{ lower_check }}</h5>
+                        <h5 style="color: red">{{ special_character_check }}</h5>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                        <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                    </div>
+
+                    <div class="form-textbox">
+                        <input type="submit" name="submit" id="submit" class="submit" value="Create account" />
+                    </div>
+                </form>
+
+                <p class="loginhere">
+                    Already have an account ?<a href="{% url 'signin' %}" class="loginhere-link"> Log in</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
